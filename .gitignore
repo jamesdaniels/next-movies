@@ -31,3 +31,8 @@ yarn-error.log*
 
 .vercel
 /.vscode
+
+# Firebase
+firebase-debug.log
+/.deploy/
+deploy.json

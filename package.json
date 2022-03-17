@@ -8,6 +8,7 @@
     "static-build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
+    "firebase-deploy": "firebase-frameworks deploy",
     "vercel-deploy": "vercel --prod",
     "netlify-deploy": "npm run static-build && netlify deploy --prod --dir=out",
     "analyze": "cross-env ANALYZE=true next build",
@@ -30,12 +31,13 @@
     "redaxios": "^0.3.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "use-dark-mode": "^2.3.1"
+    "use-dark-mode": "^2.3.1",
+    "@next/bundle-analyzer": "^9.5.3",
+    "@zeit/next-source-maps": "0.0.3",
+    "webpack": "^5.70.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.5.3",
     "@svgr/webpack": "^5.4.0",
-    "@zeit/next-source-maps": "0.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^7.4.0",
     "eslint-config-next": "^11.0.1",
