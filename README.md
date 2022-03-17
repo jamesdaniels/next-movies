@@ -38,6 +38,7 @@ Clone and install the dependencies for `next-movies` locally:
 * `npm run start`: start the project
 * `npm run vercel-deploy`: deploy to vercel
 * `npm run netlify-deploy`: deploy to netlify 
+* `npm run firebase-deploy`: deploy to firebase
 * `npm run analyze`: bundle analysis 
 * (`analyze:server` and `analyze:browser` are available too)
 
