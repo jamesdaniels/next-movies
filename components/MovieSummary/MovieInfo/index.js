@@ -24,12 +24,9 @@ const MovieInfo = ({
       <BasicsSection
         className='basic-section-bottom-margin'
         voteAverage={movie.vote_average}
-        spokenLanguages={movie.spoken_languages}
+        spokenLanguages={[]}
         runtime={movie.runtime}
         releaseDate={movie.release_date} />
-      <TheGenresSection
-        className='the-genres-section-bottom-margin'
-        genres={movie.genres} />
       <TheSynopsisSection
         className='the-synopsis-section-bottom-margin'
         synopsis={movie.overview || 'There is no synopsis available...'} />
@@ -37,10 +34,6 @@ const MovieInfo = ({
         className='cast-section-bottom-margin'
         cast={movie.cast}
         baseUrl={baseUrl} />
-      <MovieAdSection
-        websiteUrl={movie.homepage}
-        imdbId={movie.imdb_id}
-        videos={movie.videos.results} />
     </InfoWrapper>
     <style jsx>{`
       :global(.basic-section-bottom-margin) {

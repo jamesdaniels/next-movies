@@ -16,10 +16,6 @@ const BasicsSection = ({
       <Rating
         withValue
         voteAverage={voteAverage} />
-      <LanguagesRuntimeRelease
-        spokenLanguages={spokenLanguages}
-        runtime={runtime}
-        releaseDate={releaseDate} />
     </div>
     <style jsx>{`
       .basics-section {

@@ -1,0 +1,7 @@
+{
+    "hosting": {
+        "source": ".",
+        "site": "next-cats",
+        "cleanUrls": true
+    }
+}

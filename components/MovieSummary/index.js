@@ -13,7 +13,7 @@ const MovieSummary = ({
     <MovieArtwork
       width={W780H1170.WIDTH}
       height={W780H1170.HEIGHT}
-      src={`${baseUrl}w${W780H1170.WIDTH}${movie.poster_path}`} />
+      src={`/assets/images/${movie.poster_path}`} />
     <MovieInfo
       baseUrl={baseUrl}
       movie={movie} />

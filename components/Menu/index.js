@@ -65,9 +65,6 @@ const Menu = ({
         {!isMobile && <Logo />}
         <SectionHeading>Discover</SectionHeading>
         {renderStaticCategories(staticCategories, selectedMenuItemName, closeMenu)}
-        <SectionHeading>Genres</SectionHeading>
-        {renderGenres(genres, selectedMenuItemName, closeMenu)}
-        <TMDBMark className='tmdb-mark' />
       </nav>
       <style jsx>{`
         :global(.copyright) {

@@ -3,7 +3,7 @@
 import Router from 'next/router';
 
 import * as TYPES from './types';
-import { alternativeTmdbAPI as tmdbAPI } from 'services/tmdbAPI';
+import { alternativeTmdbAPI as tmdbAPI, firestoreToResult } from 'services/tmdbAPI';
 import LINKS from 'utils/constants/links';
 import { TMDB_API_VERSION } from 'config/tmdb';
 
@@ -19,12 +19,10 @@ const getStaticCategoryMovies = (name, page) => async (dispatch, getState) => {
       .filter(element => element.name === name)
       .map(element => element.id)
       .join('');
-    const response = await tmdbAPI.get(`/${TMDB_API_VERSION}/movie/${staticCategoryId}`, {
-      params: {page}
-    });
+    const response = await tmdbAPI.get(`/${TMDB_API_VERSION}/movie`);
     await dispatch({
       type: TYPES.FETCH_STATIC_CATEGORY_MOVIES,
-      payload: response.data
+      payload: firestoreToResult(response, true)
     });
     dispatch({type: TYPES.UNSET_MOVIES_LOADING});
   } catch (error) {

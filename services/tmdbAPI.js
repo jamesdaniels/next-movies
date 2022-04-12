@@ -14,18 +14,21 @@ import {
  * Could encounter such an issue as https://google-chrome.atlassian.net/browse/GOOGLE-89?focusedCommentId=10979.
  */
 
-const tmdbAPI = axios.create({
+export const tmdbAPI = axios.create({
   baseURL: TMDB_API_BASE_URL,
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
-    Authorization: `Bearer ${TMDB_API_READ_ACCESS_TOKEN}`
+    //Authorization: `Bearer ${TMDB_API_READ_ACCESS_TOKEN}`
   }
 });
 
 const alternativeTmdbAPI = axios.create({
   baseURL: TMDB_API_BASE_URL,
   params: {
-    api_key: TMDB_API_KEY,
+    // api_key: TMDB_API_KEY,
+  },
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
   }
 });
 
@@ -34,3 +37,37 @@ export {
 };
 
 export default tmdbAPI;
+
+const documentToJson = (fields) => {
+  const result = {};
+  for (const field in fields) {
+      const key = field, value = fields[field],
+          isDocumentType = ['stringValue', 'booleanValue', 'doubleValue',
+              'integerValue', 'timestampValue', 'mapValue', 'arrayValue'].find(t => t === key);
+      if (isDocumentType) {
+          let item = ['stringValue', 'booleanValue', 'doubleValue', 'integerValue', 'timestampValue']
+              .find(t => t === key)
+          if (item)
+              return value;
+          else if ('mapValue' == key)
+              return documentToJson(value.fields || {});
+          else if ('arrayValue' == key) {
+              let list = value.values;
+              return !!list ? list.map(l => documentToJson(l)) : [];
+          }
+      } else {
+          result[key] = documentToJson(value)
+      }
+  }
+  return result;
+}
+
+export const firestoreToResult = (response, keyAsId=false) =>
+  response.data.fields ? {
+    ...documentToJson(response.data.fields),
+    ...(keyAsId ? {id: response.data.name.split('/').pop()} : {})
+  } : { results: response.data.documents?.map(it => ({
+    ...documentToJson(it.fields),
+    ...(keyAsId ? {id: it.name.split('/').pop()} : {})
+  }) || [])};
+

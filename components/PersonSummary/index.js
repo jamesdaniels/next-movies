@@ -12,7 +12,7 @@ const PersonSummary = ({
     <PersonArtwork
       width={W780H1170.WIDTH}
       height={W780H1170.HEIGHT}
-      src={`${baseUrl}w${W780H1170.WIDTH}${person.profile_path}`} />
+      src={`/assets/images/${person.profile_path}`} />
     <PersonInfo
       baseUrl={baseUrl}
       person={person} />

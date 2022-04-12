@@ -2,7 +2,7 @@
 import Router from 'next/router';
 
 import * as TYPES from './types';
-import tmdbAPI from 'services/tmdbAPI';
+import { tmdbAPI, firestoreToResult } from 'services/tmdbAPI';
 import getCredits from './getCredits';
 import LINKS from 'utils/constants/links';
 import { TMDB_API_VERSION } from 'config/tmdb';
@@ -10,13 +10,16 @@ import { TMDB_API_VERSION } from 'config/tmdb';
 const getMovie = id => async dispatch => {
   try {
     dispatch({type: TYPES.SET_MOVIE_LOADING});
-    const [response] = await Promise.all([
-      tmdbAPI.get(`/${TMDB_API_VERSION}/movie/${id}`, {params: {append_to_response: 'videos'}}),
-      dispatch(getCredits(id))
+    const [movieResponse, castResponse] = await Promise.all([
+      tmdbAPI.get(`/${TMDB_API_VERSION}/movie/${id}`),
+      tmdbAPI.get(`/${TMDB_API_VERSION}/credit`),
     ]);
     await dispatch({
       type: TYPES.FETCH_MOVIE,
-      payload: response.data
+      payload: {
+        ...firestoreToResult(movieResponse),
+        cast: firestoreToResult(castResponse, true).results,
+      }
     });
     dispatch({type: TYPES.UNSET_MOVIE_LOADING});
   } catch (error) {

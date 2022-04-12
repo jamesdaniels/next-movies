@@ -2,7 +2,7 @@
 import Router from 'next/router';
 
 import * as TYPES from './types';
-import tmdbAPI from 'services/tmdbAPI';
+import {tmdbAPI, firestoreToResult} from 'services/tmdbAPI';
 import LINKS from 'utils/constants/links';
 import { TMDB_API_VERSION } from 'config/tmdb';
 
@@ -10,12 +10,10 @@ import { TMDB_API_VERSION } from 'config/tmdb';
 const getRecommendedMovies = (id, page) => async dispatch => {
   try {
     dispatch({type: TYPES.SET_RECOMMENDED_MOVIES_LOADING});
-    const response = await tmdbAPI.get(`/${TMDB_API_VERSION}/movie/${id}/recommendations`, {
-      params: {page}
-    });
+    const response = await tmdbAPI.get(`/${TMDB_API_VERSION}/movie`);
     await dispatch({
       type: TYPES.FETCH_RECOMMENDED_MOVIES,
-      payload: response.data
+      payload: firestoreToResult(response, true)
     });
     dispatch({type: TYPES.UNSET_RECOMMENDED_MOVIES_LOADING});
   } catch (error) {

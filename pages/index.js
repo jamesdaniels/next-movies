@@ -105,7 +105,7 @@ const Home = () => {
           rel='preload'
           as='fetch'
           // TODO: page is hardcoded
-          href={`${TMDB_API_BASE_URL}/${TMDB_API_VERSION}/movie/popular?api_key=${TMDB_API_KEY}&page=1`}
+          href={`${TMDB_API_BASE_URL}/${TMDB_API_VERSION}/movie`}
           crossOrigin='true' />
         <title>{`${general.selectedMenuItemName} Movies`}</title>
       </Head>

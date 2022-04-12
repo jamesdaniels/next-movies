@@ -7,10 +7,9 @@ import { TMDB_API_VERSION } from 'config/tmdb';
 
 const getConfig = () => async dispatch => {
   try {
-    const response = await tmdbAPI.get(`/${TMDB_API_VERSION}/configuration`);
     dispatch({
       type: TYPES.FETCH_CONFIG,
-      payload: response.data
+      payload: { images: '/' }
     });
   } catch (error) {
     console.log('[getConfig] error => ', error);

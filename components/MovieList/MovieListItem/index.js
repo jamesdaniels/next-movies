@@ -36,7 +36,7 @@ const MovieListItem = ({
         <Scenery
           width={W342H513.WIDTH}
           height={W342H513.HEIGHT}
-          src={`${baseUrl}w${W342H513.WIDTH}${movie.poster_path}`} />
+          src={`/assets/images/${movie.poster_path}`} />
         <DetailsPanelWrapper theme={theme}>
           <PosterTitle
             theme={theme}
