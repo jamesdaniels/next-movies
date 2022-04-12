@@ -62,12 +62,18 @@ const documentToJson = (fields) => {
   return result;
 }
 
-export const firestoreToResult = (response, keyAsId=false) =>
-  response.data.fields ? {
-    ...documentToJson(response.data.fields),
-    ...(keyAsId ? {id: response.data.name.split('/').pop()} : {})
-  } : { results: response.data.documents?.map(it => ({
-    ...documentToJson(it.fields),
-    ...(keyAsId ? {id: it.name.split('/').pop()} : {})
-  }) || [])};
+export const firestoreToResult = (response, keyAsId=false) => {
+  console.log(response);
+  if (response.data.fields) {
+    const doc = documentToJson(response.data.fields);
+    if (keyAsId) doc.id = response.data.name.split('/').pop();
+    return doc;
+  } else {
+    return { results: response.data.documents?.map(it => {
+      const doc = documentToJson(it.fields);
+      if (keyAsId) doc.id = it.name.split('/').pop();
+      return doc;
+    }) || [] };
+  }
+};
 

@@ -26,6 +26,10 @@ import LINKS from 'utils/constants/links';
 import checkEmptyObject from 'utils/helpers/checkEmptyObject';
 import { TMDB_API_KEY, TMDB_API_BASE_URL, TMDB_API_VERSION } from 'config/tmdb';
 
+export const getStaticProps = () => {
+  return { props: {} };
+};
+
 const Home = () => {
   const dispatch = useDispatch();
   const general = useSelector(state => state.general);

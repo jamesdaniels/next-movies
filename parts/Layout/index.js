@@ -6,13 +6,13 @@ import Sidebar from 'containers/Sidebar';
 import AppHeader from 'containers/AppHeader';
 import MyHead from 'components/MyHead';
 import SearchBar from 'containers/SearchBar';
-import DarkModeToggle from 'containers/DarkModeToggle';
-import TheUser from 'containers/TheUser';
 import MainWrapper from './MainWrapper';
 import ContentWrapper from './ContentWrapper';
 import init from 'actions/init';
 import withTheme from 'utils/hocs/withTheme';
 import { Media, MediaContextProvider } from 'utils/helpers/media';
+import AuthButton from 'containers/AuthButton';
+import ProfilePhoto from 'containers/ProfilePhoto';
 
 const Layout = ({
   theme,
@@ -50,10 +50,8 @@ const Layout = ({
             <Sidebar />
             <div className='desktop-widgets-container'>
               <SearchBar id='desktop' />
-              <DarkModeToggle
-                id='desktop'
-                className='left-margin' />
-              <TheUser />
+              <ProfilePhoto size='43' />
+              <AuthButton />
             </div>
             <style jsx>{`
               .desktop-widgets-container {

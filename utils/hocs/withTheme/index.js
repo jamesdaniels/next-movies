@@ -5,6 +5,7 @@
  */
 
 import ThemeContext from 'contexts/theme-context';
+import * as React from 'react';
 
 function withTheme(WrappedComponent) {
   return React.forwardRef(function ThemeComponent(props, ref) {

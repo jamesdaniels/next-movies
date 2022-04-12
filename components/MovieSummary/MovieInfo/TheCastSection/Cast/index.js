@@ -35,7 +35,7 @@ const Cast = ({
         ref={ref}
         className='cast'>
         <Glider
-          hasArrows
+          hasArrows={false}
           slidesToShow={slidesToShow}
           slidesToScroll={1}
           itemWidth={GLIDER_ITEM_WIDTH}>

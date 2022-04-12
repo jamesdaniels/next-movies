@@ -1,4 +1,4 @@
-
+import * as React from 'react';
 import Link from 'next/link';
 
 import withTheme from 'utils/hocs/withTheme';

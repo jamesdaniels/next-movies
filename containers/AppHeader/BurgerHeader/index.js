@@ -3,8 +3,8 @@
 import AppBar from 'components/UI/AppBar';
 import HamburgerButton from 'components/UI/HamburgerButton';
 import SearchBar from 'containers/SearchBar';
-import DarkModeToggle from 'containers/DarkModeToggle';
-import TheUser from 'containers/TheUser';
+import AuthButton from 'containers/AuthButton';
+import ProfilePhoto from 'containers/ProfilePhoto';
 
 const BurgerHeader = ({ openMenu }) => (
   <>
@@ -12,10 +12,8 @@ const BurgerHeader = ({ openMenu }) => (
       <HamburgerButton onClick={openMenu} />
       <div className='sticky-bar-widgets-container'>
         <SearchBar id='mobile' />
-        <DarkModeToggle
-          id='mobile'
-          className='left-margin' />
-        <TheUser />
+        <ProfilePhoto size='32' />
+        <AuthButton />
       </div>
     </AppBar>
     <style jsx>{`
