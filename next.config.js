@@ -30,8 +30,8 @@ module.exports = withBundleAnalyzer(withSourceMaps({
       projectId: "nextjs-demo-73e34",
       storageBucket: "nextjs-demo-73e34.appspot.com",
       messagingSenderId: "1031831013463",
-      appId: "1:1031831013463:web:6df9cb0c39720957f63b12",
-      measurementId: "G-5NMKG9YFR5"
+      appId: "1:1031831013463:web:7ae2bb5dced97656f63b12",
+      measurementId: "G-Y2PKXX0B7V"
     }
   },
 }));
