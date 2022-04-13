@@ -36,3 +36,5 @@ yarn-error.log*
 firebase-debug.log
 /.deploy/
 deploy.json
+.firebase
+.service-account.json
